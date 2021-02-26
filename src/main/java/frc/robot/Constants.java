@@ -3,6 +3,13 @@ package frc.robot;
 
 
 public final class Constants {
+
+    /**
+	 * PID Gains may have to be adjusted based on the responsiveness of control loop.
+     * kF: 1023 represents output value to Talon at 100%, 20660 represents Velocity units at 100% output
+     * 
+	 * 	                                    			  kP   	 kI    kD      kF          Iz    PeakOut */
+   public final static Gains kGains_Velocit  = new Gains( 0.1, 0.001, 5, 1023.0/20660.0,  300,  1.00);
     
     // Drive Constants
     public static final class DriveConstants {
@@ -29,8 +36,8 @@ public final class Constants {
         public static final int kIndexerFront = 6;
         
         // Fly Wheel
-        public static final int kLeftFlyWheel = 7;
-        public static final int kRightFlyWheel = 8;
+        public static final int kFlyWheel = 8;
+        public static final int kFeeder = 7;
         // Climber
         public static final int kClimbMotor = 10;
         // Intake (PWM 0)

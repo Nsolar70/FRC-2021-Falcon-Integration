@@ -3,10 +3,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
-import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,10 +15,10 @@ import frc.robot.Constants.EncoderConstants;
 public class DriveTrain extends SubsystemBase {
   
   // Drive Motors
-   private final WPI_TalonFX frontLeftMotor = new WPI_TalonFX(DriveConstants.kFrontLeftMotor);
-   private final WPI_TalonFX backLeftMotor = new WPI_TalonFX(DriveConstants.kBackLeftMotor);
-   private final WPI_TalonFX frontRightMotor = new WPI_TalonFX(DriveConstants.kFrontRightMotor);
-   private final WPI_TalonFX backRightMotor = new WPI_TalonFX(DriveConstants.kBackRightMotor);
+   private final WPI_TalonSRX frontLeftMotor = new WPI_TalonSRX(DriveConstants.kFrontLeftMotor);
+   private final WPI_TalonSRX backLeftMotor = new WPI_TalonSRX(DriveConstants.kBackLeftMotor);
+   private final WPI_TalonSRX frontRightMotor = new WPI_TalonSRX(DriveConstants.kFrontRightMotor);
+   private final WPI_TalonSRX backRightMotor = new WPI_TalonSRX(DriveConstants.kBackRightMotor);
   
   double joyThreshold = 0.05; // Default threshold value from XboxController
   
@@ -29,16 +27,16 @@ public class DriveTrain extends SubsystemBase {
 
   // Array for drive motors
    private  static final int kMaxNumberOfMotors = 4;
-   private WPI_TalonFX[] m_TalonFXs = new WPI_TalonFX[kMaxNumberOfMotors];
+   private WPI_TalonSRX[] m_TalonFXs = new WPI_TalonSRX[kMaxNumberOfMotors];
 
   // Drive Train
   public DriveTrain() {
 
     // add motors to array
-    m_TalonFXs[1] = frontLeftMotor;
-    m_TalonFXs[2] = backLeftMotor;
-    m_TalonFXs[3] = frontRightMotor;
-    m_TalonFXs[4] = backRightMotor;
+    m_TalonFXs[0] = frontLeftMotor;
+    m_TalonFXs[1] = backLeftMotor;
+    m_TalonFXs[2] = frontRightMotor;
+    m_TalonFXs[3] = backRightMotor;
 
      final double iaccum = 0;
 
@@ -51,9 +49,11 @@ public class DriveTrain extends SubsystemBase {
     for(talonIndex = 0; talonIndex< kMaxNumberOfMotors; talonIndex++){
         // Reset to default to remove any errors associated
         m_TalonFXs[talonIndex].configFactoryDefault();
+
         //Current Limiting
-        m_TalonFXs[talonIndex].configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 25, 1.0));
-        m_TalonFXs[talonIndex].configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 10, 15, 0.5));
+       /* m_TalonFXs[talonIndex].configStatorCurrentLimit(new StatorCurrentLimitConfiguration(true, 20, 25, 1.0));
+        m_TalonFXs[talonIndex].configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 10, 15, 0.5)); */
+
         // Encoder Setup
         m_TalonFXs[talonIndex].configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, EncoderConstants.kPIDLoopIdx, EncoderConstants.kTimeoutMs);
         m_TalonFXs[talonIndex].setIntegralAccumulator(iaccum, 0, 10);
@@ -119,5 +119,5 @@ public class DriveTrain extends SubsystemBase {
     frontRightMotor.set(ControlMode.PercentOutput, 0.0);
     backLeftMotor.set(ControlMode.PercentOutput, 0.0);
   }
-  }
+}
 

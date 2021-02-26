@@ -25,7 +25,7 @@ public class RunFlyWheel extends CommandBase {
   // Run
   @Override
   public void execute() {
-    m_flyWheel.Run();
+    m_flyWheel.RunFlyWheel();
   }
 
   // End

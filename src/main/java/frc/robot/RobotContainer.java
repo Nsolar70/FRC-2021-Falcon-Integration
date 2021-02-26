@@ -19,10 +19,12 @@ import frc.robot.commands.TurnTurret;
 import frc.robot.limelight.LimeLight;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.FeederWheel;
 import frc.robot.subsystems.FlyWheel;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Turret;
+
 
 
 public class RobotContainer {
@@ -34,6 +36,7 @@ public class RobotContainer {
    private final Indexer m_indexer = new Indexer();
    private final FlyWheel m_flyWheel = new FlyWheel();
    private final Climber m_climber = new Climber();
+   private final FeederWheel m_feederWheel = new FeederWheel();
 
   // The Xbox Controller
    XboxController m_driverController = new XboxController(OIConstants.kDriveJoyStick);
@@ -46,9 +49,9 @@ public class RobotContainer {
   private final CommandBase m_ejectBallCommand = new EjectBall(m_intake);
   private final CommandBase m_manualyIndexUp = new ManualyIndexUp(m_indexer);
   // private final CommandBase m_indexDownCommand = new ManualyIndexDown(m_indexer);
-  private final CommandBase m_manualyShoot = new ManualyShoot(m_flyWheel, m_indexer);
+  private final CommandBase m_manualyShoot = new ManualyShoot(m_flyWheel, m_indexer, m_feederWheel);
   private final CommandBase m_manualyIndexDown = new ManualyIndexDown(m_indexer);
-  private final CommandBase m_autoShoot = new AutoShoot(m_driveTrain, m_flyWheel, m_indexer, m_turret);
+  private final CommandBase m_autoShoot = new AutoShoot(m_driveTrain, m_flyWheel, m_indexer, m_turret, m_feederWheel);
 
   // LimeLight
    private final LimeLight limeLight = new LimeLight();

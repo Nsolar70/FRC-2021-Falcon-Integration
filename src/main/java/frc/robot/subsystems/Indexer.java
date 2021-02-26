@@ -35,9 +35,9 @@ public class Indexer extends SubsystemBase {
   final String shootSpeed = "Shoot Speed";
   final String indexTime = "Index Time";
   final double timeDelay = 3.0;
-  final double SpeedIndexer = 0.2;
-  final double SpeedShoot = 0.2;
-  final double SpeedIndexerSlow = 0.1;
+  final double SpeedIndexer = 0.3;
+  final double SpeedShoot = 0.3;
+  final double SpeedIndexerSlow = 0.2;
   private double setSpeed;
   //local variables
   private final String [] snapShotSensors = new String[5];

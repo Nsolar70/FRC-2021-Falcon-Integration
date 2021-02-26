@@ -142,7 +142,7 @@ public class Turret extends SubsystemBase {
   //---------------------------------------------------------------------
   // Estimated Distance
   //---------------------------------------------------------------------
-  private double EstimatedDistance(double a2) {
+  public double EstimatedDistance(double a2) {
     return (h2-h1)/Math.tan(a1+a2);
   }
 
