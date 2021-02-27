@@ -12,8 +12,6 @@ import frc.robot.Constants.EncoderConstants;
 
 
 public class FlyWheel extends SubsystemBase {
-
-  //Pulling the Estimated Distance off the sufffleboard
   
   // Motor
    private final WPI_TalonFX FlyWheel = new WPI_TalonFX(Constants.ActuatorConstants.kFlyWheel);
@@ -23,7 +21,6 @@ public class FlyWheel extends SubsystemBase {
    final String IntakeSpeed ="FlyWheelSpeed";
    final double SpeedIn = -1.0;
    private  double setSpeed;
-   final double EstimateDistance = SmartDashboard.getNumber("Estimate Distance", 0);
    private double targetVelocity_UnitsPer100ms;
    
   
@@ -43,6 +40,7 @@ public class FlyWheel extends SubsystemBase {
   // Periodic
   @Override
   public void periodic() {
+   
 
    
   }
@@ -51,6 +49,9 @@ public class FlyWheel extends SubsystemBase {
   
   // Flywheel
   public void RunFlyWheel() {
+
+  //Pulling the Estimated Distance off the sufffleboard
+  double EstimateDistance = SmartDashboard.getNumber("Estimate Distance", 0);
 
     /* Velocity Closed Loop */
 
@@ -82,7 +83,6 @@ public class FlyWheel extends SubsystemBase {
    }  
 
    else {
-
     double backup = SpeedIn;
     setSpeed = getPreferencesDouble(IntakeSpeed ,backup);
     FlyWheel.set(ControlMode.PercentOutput, setSpeed);
