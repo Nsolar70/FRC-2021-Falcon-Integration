@@ -28,9 +28,9 @@ public class Turret extends SubsystemBase {
   private double limeLightTx;
   private double limeLightTy;
   private double limeLightA2;
-  double h1 = 37.5;
-  double h2 = 98.25;
-  double a1 = 0.0;
+  double h1 = 37.5;  // Height of Limelight Camera (Inches)
+  double h2 = 98.25; // Height of Target (Inches)
+  double a1 = 0.0;   // Mounting anfle (Degrees)
   double kpAim = -0.035;
   boolean targetFound = false;
   boolean isTracking;

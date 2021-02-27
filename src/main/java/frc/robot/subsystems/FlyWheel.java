@@ -33,19 +33,6 @@ public class FlyWheel extends SubsystemBase {
 
   // Fly Wheel
    public FlyWheel() {
-
-    
-
-    /* Velocity Closed Loop */
-
-			/**
-			 * Convert 500 RPM to units / 100ms.
-			 * 2048 Units/Rev * 500 RPM / 600 100ms/min in either direction:
-			 * velocity setpoint is in units/100ms
-			 */
-    
-    	/* 500 RPM in either direction */
-      FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
       
       /* Config the Velocity closed loop gains in slot0 */
     
@@ -64,28 +51,47 @@ public class FlyWheel extends SubsystemBase {
   }
   
   
+  
   // Flywheel
   public void RunFlyWheel() {
+
+    /* Velocity Closed Loop */
+
+			/**
+			 * Convert 500 RPM to units / 100ms.
+			 * 2048 Units/Rev * 500 RPM / 600 100ms/min in either direction:
+			 * velocity setpoint is in units/100ms
+			 */
+    
+  if (EstimateDistance > 0 && EstimateDistance < 90 ) {
+                                    //RPM    
+    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
+    FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
+   }
+
+   if (EstimateDistance > 90 && EstimateDistance < 150 ) {
+    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
+    FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
+   }
+
+   if (EstimateDistance > 150 && EstimateDistance < 210) {
+    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
+    FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
+   }
+
+   if (EstimateDistance > 210 && EstimateDistance < 270 ) {
+    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
+    FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
+   }  
+
+   else {
+
     double backup = SpeedIn;
     setSpeed = getPreferencesDouble(IntakeSpeed ,backup);
     FlyWheel.set(ControlMode.PercentOutput, setSpeed);
 
-  if (EstimateDistance > 0 && EstimateDistance < 7.5 ) {
-    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
-   }
-
-   if (EstimateDistance > 7.5 && EstimateDistance < 12.5 ) {
-    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
-   }
-
-   if (EstimateDistance > 12.5 && EstimateDistance < 17.5) {
-    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
-   }
-
-   if (EstimateDistance > 17.5 && EstimateDistance < 22.5 ) {
-    targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
    }  
-
+    
   }
 
   // Stop Motion
