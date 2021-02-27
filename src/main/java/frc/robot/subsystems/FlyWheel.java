@@ -45,15 +45,15 @@ public class FlyWheel extends SubsystemBase {
 			 */
     
     	/* 500 RPM in either direction */
-      //FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
+      FlyWheel.set(TalonFXControlMode.Velocity, targetVelocity_UnitsPer100ms);
       
       /* Config the Velocity closed loop gains in slot0 */
-    /*
+    
 		FlyWheel.config_kF(EncoderConstants.kPIDLoopIdx, Constants.kGains_Velocit.kF, EncoderConstants.kTimeoutMs);
 		FlyWheel.config_kP(EncoderConstants.kPIDLoopIdx, Constants.kGains_Velocit.kP, EncoderConstants.kTimeoutMs);
 		FlyWheel.config_kI(EncoderConstants.kPIDLoopIdx, Constants.kGains_Velocit.kI, EncoderConstants.kTimeoutMs);
     FlyWheel.config_kD(EncoderConstants.kPIDLoopIdx, Constants.kGains_Velocit.kD, EncoderConstants.kTimeoutMs);
-    */
+    
   }
 
   // Periodic
@@ -69,7 +69,7 @@ public class FlyWheel extends SubsystemBase {
     double backup = SpeedIn;
     setSpeed = getPreferencesDouble(IntakeSpeed ,backup);
     FlyWheel.set(ControlMode.PercentOutput, setSpeed);
-/*
+
   if (EstimateDistance > 0 && EstimateDistance < 7.5 ) {
     targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
    }
@@ -84,7 +84,7 @@ public class FlyWheel extends SubsystemBase {
 
    if (EstimateDistance > 17.5 && EstimateDistance < 22.5 ) {
     targetVelocity_UnitsPer100ms =  2000.0 * 2048.0 / 600.0;
-   }  */
+   }  
 
   }
 
