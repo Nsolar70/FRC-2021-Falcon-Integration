@@ -5,7 +5,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 //import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,7 +27,7 @@ public class Turret extends SubsystemBase {
   private double limeLightTx;
   private double limeLightTy;
   private double limeLightA2;
-  double h1 = 37.5;
+  double h1 = 38;
   double h2 = 98.25;
   double a1 = 0.0;
   double kpAim = -0.035;

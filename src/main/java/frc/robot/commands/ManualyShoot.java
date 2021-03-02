@@ -24,7 +24,7 @@ public class ManualyShoot extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());super();
     super(
-        new RunFlyWheel(m_flyWheel,false).withTimeout(1),
+        new RunFlyWheel(m_flyWheel,false).withTimeout(2),
         parallel(
         new RunFeederWheel(m_feederWheel,true),
         new RunFlyWheel(m_flyWheel,true),

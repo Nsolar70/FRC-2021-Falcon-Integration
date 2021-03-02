@@ -19,6 +19,7 @@ public class Indexer extends SubsystemBase {
 
   // Motors
   private final WPI_VictorSPX indexerFront = new WPI_VictorSPX(ActuatorConstants.kIndexerFront);
+  private final WPI_VictorSPX indexerBack = new WPI_VictorSPX(ActuatorConstants.kIndexerBack);
   
   // Sensors in the indexer holder
   //Local variables
@@ -53,9 +54,17 @@ public class Indexer extends SubsystemBase {
 
   // Indexer
   public Indexer() {
+
+    // set motor inversion
     indexerFront.setInverted(true);
-   
+    indexerBack.setInverted(false);
+
+    // Set motor mode to Brake
     indexerFront.setNeutralMode(NeutralMode.Brake);
+    indexerBack.setNeutralMode(NeutralMode.Brake);
+
+    // Set back indexer to follow the front indexer
+     indexerBack.follow(indexerFront);
     
   }
 

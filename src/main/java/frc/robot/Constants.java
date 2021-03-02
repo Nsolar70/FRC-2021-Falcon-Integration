@@ -34,12 +34,12 @@ public final class Constants {
         public static final int kTurretMotor = 5;
         // Indexer
         public static final int kIndexerFront = 6;
-        
+        public static final int kIndexerBack = 10;
         // Fly Wheel
         public static final int kFlyWheel = 8;
         public static final int kFeeder = 7;
         // Climber
-        public static final int kClimbMotor = 10;
+        public static final int kClimbMotor = 11;
         // Intake (PWM 0)
         public static final int kIntakeMotor = 0;
         // Latch (PWM 1)
